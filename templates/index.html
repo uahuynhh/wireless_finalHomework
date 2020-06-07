@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Index</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<script>
+        function _update_time() { 
+            $.getJSON(
+                "/refresh_data",
+                function(data) {
+                console.log(data)
+                $("#distance").text(data.distance);
+                });
+        }
+        // do a first call at load time
+        _update_time();
+        // then repeat it every second
+        window.setInterval(_update_time, 1000);
+    
+</script>
+<body>
+  <p>The distance is <p id="distance"></p> cm</p>
+</body>
+
+</html>
